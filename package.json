@@ -1,0 +1,44 @@
+{
+  "name": "pp-limit",
+  "version": "0.0.1",
+  "description": "Parallel Promise Limiter (pp-limit) 是一个 Promise 并发控制器，可以控制同时进行的任务数量。",
+  "repository": "RSoraM/pp-limit",
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "vitest dev",
+    "lint": "eslint --ext .ts,.js,.mjs,.cjs . && prettier -c src test",
+    "lint:fix": "eslint --fix --ext .ts,.js,.mjs,.cjs . && prettier -w src test",
+    "prepack": "unbuild",
+    "release": "pnpm test && changelogen --release --push && pnpm publish",
+    "test": "pnpm lint && vitest run && pnpm typecheck",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.10",
+    "@vitest/coverage-v8": "^1.2.2",
+    "changelogen": "^0.5.5",
+    "eslint": "^8.56.0",
+    "eslint-config-unjs": "^0.2.1",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3",
+    "unbuild": "^2.0.0",
+    "vitest": "^1.2.2"
+  },
+  "packageManager": "pnpm@8.15.0"
+}
